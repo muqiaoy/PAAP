@@ -1,0 +1,53 @@
+
+# Models
+model: FullSubNet
+fullsubnet:
+    sb_num_neighbors: 15
+    fb_num_neighbors: 0
+    num_freqs: 257
+    look_ahead: 2
+    sequence_model: "LSTM"
+    fb_output_activate_function: "ReLU"
+    sb_output_activate_function: false
+    fb_model_hidden_size: 512
+    sb_model_hidden_size: 384
+    weight_init: false
+    norm_type: "offline_laplace_norm"
+    num_groups_in_drop_band: 1
+continue_pretrained: "pretrained/fullsubnet_best_model_58epochs.tar"
+acoustic_model_path: "pretrained/ac_estimator.pt"
+phoneme_weight_path: "pretrained/phoneme-segmented-logit-weights-v0.npy"
+
+# data
+dset:
+  train: json_list/dns/tr/
+  valid: json_list/dns/cv/
+  test: json_list/dns/tt/
+  noisy_json:
+  noisy_dir:
+  matching: dns
+sample_rate: 16000
+segment: 3.072
+stride: 30    # in seconds, how much to stride between training examples
+pad: false   # if training sample is too short, pad it
+
+# Dataset Augmentation
+remix: false   # remix noise and clean
+bandmask: 0.   # drop at most this fraction of freqs in mel scale
+shift: 16000    # random shift, number of samples
+shift_same: True   # shift noise and clean by the same amount
+revecho: 0  # add reverb like augment
+
+
+# Training related
+acoustic_loss: True
+acoustic_loss_only: False
+ac_loss_weight: 0.1
+ac_loss_type: l2
+is_phoneme_weighted: True
+stft_sc_factor: .5
+stft_mag_factor: .5
+stft_loss_weight: 0.05
+epochs: 40
+batch_size: 32  # 4 GPUs
+eval_every: 1

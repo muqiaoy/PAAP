@@ -1,0 +1,55 @@
+
+# Models
+model: Demucs # either demucs or dwave
+demucs:
+  chin: 1
+  chout: 1
+  hidden: 64
+  max_hidden: 10000
+  causal: true
+  glu: true
+  depth: 5
+  kernel_size: 8
+  stride: 4
+  normalize: true
+  resample: 4
+  growth: 2
+  rescale: 0.1
+continue_pretrained: "pretrained/dns64-a7761ff99a7d5bb6.th"
+acoustic_model_path: "pretrained/ac_estimator.pt"
+phoneme_weight_path: "pretrained/phoneme-segmented-logit-weights-v0.npy"
+
+# data
+dset:
+  train: json_list/dns/tr/
+  valid: json_list/dns/cv/
+  test: json_list/dns/tt/
+  noisy_json:
+  noisy_dir:
+  matching: dns
+sample_rate: 16000
+segment: 10
+stride: 2   # in seconds, how much to stride between training examples
+pad: true   # if training sample is too short, pad it
+
+# Dataset Augmentation
+remix: false   # remix noise and clean
+bandmask: 0.   # drop at most this fraction of freqs in mel scale
+shift: 16000    # random shift, number of samples
+shift_same: True   # shift noise and clean by the same amount
+revecho: 0  # add reverb like augment
+
+
+# Training related
+acoustic_loss: True
+acoustic_loss_only: False
+ac_loss_weight: 0.1
+ac_loss_type: l2
+is_phoneme_weighted: True
+stft_loss: True
+stft_sc_factor: .5
+stft_mag_factor: .5
+stft_loss_weight: 0.05
+epochs: 40
+batch_size: 64  # 4 GPUs
+eval_every: 1

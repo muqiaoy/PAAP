@@ -1,0 +1,31 @@
+model: PhonemeWeightEstimator
+PhonemeWeightEstimator:
+  hidden: 128
+
+# data
+dset:
+  train: json_list/dns/tr/
+  valid: json_list/dns/cv/
+  test: json_list/dns/tt/
+  noisy_json:
+  noisy_dir:
+  matching: dns
+sample_rate: 16000
+segment: 30
+stride: 2   # in seconds, how much to stride between training examples
+pad: true   # if training sample is too short, pad it
+
+# egemaps stuff
+acoustic_train_path: data/acoustics/train/
+acoustic_valid_path: data/acoustics/valid/
+acoustic_test_path: data/acoustics/test/
+# phoneme logits stuff
+ph_logits_train_path: data/ph_logits/train/
+ph_logits_valid_path: data/ph_logits/valid/
+ph_logits_test_path: data/ph_logits/test/
+
+
+
+epochs: 100
+batch_size: 32
+eval_every: 1

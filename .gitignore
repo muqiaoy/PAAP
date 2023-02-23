@@ -1,3 +1,14 @@
+data/
+exp/
+json_list/
+*.ipynb
+noresqa/
+figs/
+
+launch_*.sh
+*.out
+*.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

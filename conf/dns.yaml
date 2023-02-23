@@ -1,0 +1,8 @@
+dset:
+  train: json_list/dns/tr/
+  valid: json_list/dns/tt/
+  test: json_list/dns/tt/
+  noisy_json:
+  noisy_dir:
+  matching: dns
+eval_every: 1
