@@ -18,7 +18,7 @@ class PAAPLoss(torch.nn.Module):
     
     def __init__(self, args, device = 'cuda'):
         
-        super(AcousticLoss, self).__init__()
+        super(PAAPLoss, self).__init__()
         model_state_dict = torch.load(os.path.join(parentdir, args.acoustic_model_path), map_location=device)['model_state_dict']
         self.args = args
         self.estimate_acoustics = AcousticEstimator()

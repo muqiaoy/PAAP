@@ -1,0 +1,16 @@
+torch
+torchaudio
+tensorboard
+hydra
+hydra_colorlog
+opensmile
+tqdm
+julius
+librosa
+pesq
+pystoi
+transformers
+praatio
+nltk
+g2p-en
+g2pM

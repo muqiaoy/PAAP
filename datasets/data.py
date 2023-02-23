@@ -109,7 +109,7 @@ class NoisyCleanSet:
         assert len(self.clean_set) == len(self.noisy_set)
 
     def __getitem__(self, index):
-        noisy, _, _, _, offset = self.noisy_set[index]
+        noisy, _, _, offset = self.noisy_set[index]
         clean, acoustics, ph_logits, _ = self.clean_set.__getitem__(index, offset)
         acoustics = (acoustics - self.MU) / self.STD
         

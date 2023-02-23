@@ -6,6 +6,10 @@ Title: PAAPLoss: A Phonetic-Aligned Acoustic Parameter Loss for Speech Enhanceme
 
 Arxiv: https://arxiv.org/abs/2302.08095
 
+## Prerequisites
+```
+pip install -r requirements.txt
+```
 
 ## Datasets
 1. Please follow https://github.com/microsoft/DNS-Challenge/tree/interspeech2020/master to download the DNS Interspeech 2020 dataset.
@@ -25,7 +29,7 @@ Arxiv: https://arxiv.org/abs/2302.08095
 
     Generating the acoustic feature for the first time could be slow and take up some space.
     ```
-    python train_est.py --estimator=acoustic
+    python train_est.py estimator=acoustic
     ```
 2. Prepare the json list of the train/valid/test data.
     ```
@@ -35,7 +39,7 @@ Arxiv: https://arxiv.org/abs/2302.08095
 3. Finetune the enhancement model (only support Demucs / FullSubNet so far).
     The pretrained model checkpoints can be downloaded at the original authors' repositories.
     ```
-    python train.py --finetune=Demucs
+    python train.py finetune=demucs
     ```
     By default it takes up all of the available GPUs.
 
