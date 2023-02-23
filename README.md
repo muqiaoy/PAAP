@@ -41,6 +41,10 @@ pip install -r requirements.txt
     ```
     python train.py finetune=demucs
     ```
+    or
+    ```
+    python train.py finetune=fullsubnet
+    ```
     By default it takes up all of the available GPUs.
 
 4. This objective function can also be used at arbitrary model by using the pretrained acoustic estimator.
