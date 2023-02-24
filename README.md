@@ -49,6 +49,9 @@ pip install -r requirements.txt
 
 4. This objective function can also be used at arbitrary model by using the pretrained acoustic estimator.
 
+## Related Resources
+More details about the official implementation of [TAPLoss: A Temporal Acoustic Parameter Loss For Speech Enhancement](https://arxiv.org/abs/2302.08088) can be found at https://github.com/YunyangZeng/TAPLoss. 
+
 
 ## Acknowledgement
 
